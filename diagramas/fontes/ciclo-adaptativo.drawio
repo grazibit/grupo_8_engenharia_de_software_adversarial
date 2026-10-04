@@ -1,0 +1,160 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="ciclo-adaptativo" name="Ciclo adaptativo">
+    <mxGraphModel dx="1540" dy="1220" grid="0" gridSize="10" page="1" pageScale="1" pageWidth="1540" pageHeight="1220" background="none">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="r1c1" value="O usuário tenta reservar&lt;br&gt;vários horários usando&lt;br&gt;uma só conta." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="188" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r1c2" value="O sistema passa a limitar&lt;br&gt;as reservas ativas de&lt;br&gt;cada conta." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="440" y="188" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r1c3" value="Usuário: recebe recusas.&lt;br&gt;Sistema: vê muitas reservas&lt;br&gt;feitas na mesma conta." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="800" y="188" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r1c4" value="Usuário: usa outras contas.&lt;br&gt;Sistema: passa a comparar&lt;br&gt;reservas entre contas." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1160" y="188" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r2c1" value="O usuário usa várias contas&lt;br&gt;para reservar horários&lt;br&gt;na mesma agenda." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="486" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r2c2" value="O sistema pede confirmação&lt;br&gt;quando contas diferentes&lt;br&gt;reservam em pouco tempo." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="440" y="486" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r2c3" value="Usuário: recebe pedidos&lt;br&gt;de confirmação.&lt;br&gt;Sistema: vê muitos horários&lt;br&gt;ocupados apesar do limite." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="800" y="486" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r2c4" value="Usuário: espera mais tempo&lt;br&gt;entre as tentativas.&lt;br&gt;Sistema: consulta um período&lt;br&gt;maior do histórico." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1160" y="486" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r3c1" value="O usuário usa as mesmas&lt;br&gt;contas, mas aumenta o tempo&lt;br&gt;entre as reservas." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="784" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r3c2" value="O sistema analisa o histórico.&lt;br&gt;Reservas provisórias sem&lt;br&gt;confirmação são liberadas&lt;br&gt;quando o prazo termina." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="440" y="784" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r3c3" value="Usuário: ainda precisa&lt;br&gt;confirmar algumas reservas.&lt;br&gt;Sistema: vê o histórico&lt;br&gt;e possíveis bloqueios&lt;br&gt;de reservas legítimas." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="800" y="784" width="300" height="174" />
+        </mxCell>
+        <mxCell id="r3c4" value="Usuário: pode cancelar&lt;br&gt;e tentar reservar de novo.&lt;br&gt;Sistema: busca repetições&lt;br&gt;e ajusta a confirmação." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1160" y="784" width="300" height="174" />
+        </mxCell>
+        <mxCell id="next" value="&lt;b&gt;Próxima rodada&lt;/b&gt;&lt;br&gt;Nova tentativa de reserva." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=22;align=left;verticalAlign=top;spacing=0;spacingTop=16;spacingLeft=16;spacingRight=16;spacingBottom=12;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.2;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="555" y="1016" width="430" height="100" />
+        </mxCell>
+        <mxCell id="diagram-title" value="Ciclo adaptativo no agendamento de consultas" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=30;fontColor=#000000;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="25" width="1380" height="43" />
+        </mxCell>
+        <mxCell id="subtitle" value="Tentativas de ocupar os horários e respostas do sistema" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=21;fontColor=#000000;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="71" width="1380" height="36" />
+        </mxCell>
+        <mxCell id="column-0" value="Ação" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=22;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="154" width="300" height="36" />
+        </mxCell>
+        <mxCell id="column-1" value="Resposta" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=22;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="440" y="154" width="300" height="36" />
+        </mxCell>
+        <mxCell id="column-2" value="Observação" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=22;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="800" y="154" width="300" height="36" />
+        </mxCell>
+        <mxCell id="column-3" value="Adaptação" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=22;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1160" y="154" width="300" height="36" />
+        </mxCell>
+        <mxCell id="row-1" value="Rodada 1 — Uma conta" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=24;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="112" width="1380" height="36" />
+        </mxCell>
+        <mxCell id="row-2" value="Rodada 2 — Várias contas" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=24;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="445" width="1380" height="36" />
+        </mxCell>
+        <mxCell id="row-3" value="Rodada 3 — Reservas espaçadas" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=24;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="743" width="1380" height="36" />
+        </mxCell>
+        <mxCell id="history-1" value="O limite por conta continua em uso." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=20;fontColor=#000000;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="372" width="740" height="36" />
+        </mxCell>
+        <mxCell id="history-2" value="O sistema mantém o limite e consulta o histórico." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=20;fontColor=#000000;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="380" y="670" width="920" height="36" />
+        </mxCell>
+        <mxCell id="history-next" value="Os controles e o histórico anteriores continuam em uso." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=20;fontColor=#000000;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="200" y="1137" width="1140" height="36" />
+        </mxCell>
+        <mxCell id="actor-note" value="Usuário: adversário que tenta ocupar os horários." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=19;fontColor=#000000;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="1180" width="1380" height="36" />
+        </mxCell>
+        <mxCell id="r1-edge-1" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r1c1" target="r1c2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r1-edge-2" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r1c2" target="r1c3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r1-edge-3" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r1c3" target="r1c4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r2-edge-1" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r2c1" target="r2c2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r2-edge-2" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r2c2" target="r2c3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r2-edge-3" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r2c3" target="r2c4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r3-edge-1" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r3c1" target="r3c2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r3-edge-2" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r3c2" target="r3c3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r3-edge-3" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r3c3" target="r3c4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="round-1-to-2" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r1c4" target="r2c1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1505" y="275" />
+              <mxPoint x="1505" y="404" />
+              <mxPoint x="35" y="404" />
+              <mxPoint x="35" y="573" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="round-2-to-3" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r2c4" target="r3c1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1505" y="573" />
+              <mxPoint x="1505" y="702" />
+              <mxPoint x="35" y="702" />
+              <mxPoint x="35" y="871" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="round-3-to-next" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=5 4;" edge="1" parent="1" source="r3c4" target="next">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1310" y="1066" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

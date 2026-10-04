@@ -83,5 +83,13 @@ O objetivo do defensor não é acrescentar restrições indefinidamente, mas man
 
 Este recorte corresponde ao abuso de um fluxo de negócio sensível: a OWASP inclui a ocupação de todos os horários de um serviço como exemplo de uso excessivo de reservas, na categoria API6:2023. A modelagem também se apoia na discussão da OWASP sobre abuso de funcionalidades válidas por automação. Essas referências fundamentam o cenário; as três rodadas e os controles apresentados são propostas para o sistema de agendamento. As fontes estão em [fontes/referencias.md](fontes/referencias.md).
 
+#### Diagrama do ciclo adaptativo
+
+O diagrama apresenta as três rodadas na sequência ação → resposta → observação → adaptação. A adaptação de uma rodada leva à ação da seguinte. A seta tracejada ao final indica uma nova tentativa de reserva, que será avaliada com os controles e o histórico das rodadas anteriores. No diagrama, “usuário” representa o adversário que tenta ocupar a agenda.
+
+![Ciclo adaptativo do abuso de reservas em três rodadas](diagramas/ciclo-adaptativo.png)
+
+[Fonte editável do diagrama em draw.io](diagramas/fontes/ciclo-adaptativo.drawio).
+
 ### 3.4 Ameaças e riscos
 *(A Pessoa 4 vai preencher esta parte)*
