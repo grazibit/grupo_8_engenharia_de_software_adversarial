@@ -59,5 +59,29 @@ A rodada 2 surge porque o limite aplicado na rodada 1 torna menos útil concentr
 
 O limite por conta restringe novas reservas, mas não libera automaticamente horários já confirmados. Da mesma forma, observar padrões semelhantes entre contas não identifica com certeza quem as controla. A sequência mostra aprendizado e mudança de estratégia, sem presumir que uma defesa encerra a disputa.
 
+#### Observação e decisões de cada lado
+
+- **Quem observa quem?** O adversário observa as respostas às próprias solicitações: aceitação, recusa, pedido de confirmação e expiração de reservas provisórias. A partir delas, formula hipóteses sobre os controles. O defensor observa as solicitações e seus resultados registrados, inclusive as tentativas recusadas, para comparar o comportamento entre rodadas. As regras internas de detecção não precisam ser expostas nas mensagens ao usuário.
+- **O que cada lado consegue mudar?** O adversário altera o número de contas, a quantidade de reservas, os horários escolhidos e o intervalo entre as tentativas. O defensor altera os limites, o período analisado no histórico, os critérios de confirmação e o prazo das reservas provisórias. As mudanças preservam as reservas legítimas já confirmadas e a possibilidade de revisão de decisões indevidas.
+- **O que dispara uma adaptação?** Para o adversário, uma recusa ou uma confirmação adicional indica que sua forma atual de reservar encontrou uma restrição. Para o defensor, a concentração de horários, a persistência do padrão após uma mudança de controle e a frequência de verificações indevidas indicam que os critérios precisam ser reavaliados. Os dois lados decidem com informação incompleta: uma reserva aceita não prova ausência de monitoramento, e um padrão semelhante não comprova abuso.
+
+#### Custos da adaptação e efeitos sobre pacientes legítimos
+
+| Rodada | Custo para o adversário | Custo para o defensor | Possível efeito sobre pacientes legítimos |
+| --- | --- | --- | --- |
+| **1** | Investir esforço em tentativas recusadas e manter novas contas para continuar a concentração. | Contar reservas por conta e tratar as solicitações acima do limite. | Pacientes que precisam de acompanhamentos frequentes podem atingir o limite, exigindo uma exceção justificada ou revisão. |
+| **2** | Administrar várias contas e enfrentar confirmações adicionais. | Comparar registros entre contas e analisar solicitações sinalizadas. | Reservas feitas em horários semelhantes por pessoas diferentes podem exigir confirmação, aumentando o tempo para concluir o agendamento. |
+| **3** | Esperar entre tentativas e manter o esforço por mais tempo, com risco de perder horários provisórios que expirem. | Consultar um histórico maior, acompanhar pendências e revisar decisões indevidas. | Pacientes com dificuldade para responder à confirmação podem perder uma reserva provisória e precisar solicitar outro horário. |
+
+Os limites devem considerar necessidades legítimas de acompanhamento, e os casos contestados devem admitir revisão. O prazo de confirmação precisa ser comunicado de forma clara. O tratamento dos registros deve se limitar às informações necessárias à análise do agendamento, sem usar dados clínicos para inferir intenção. A avaliação dos controles considera tanto a redução da ocupação abusiva quanto os atrasos e as restrições impostas ao uso legítimo.
+
+#### Corrida armamentista e continuidade da disputa
+
+A corrida armamentista pode começar na passagem da rodada 1 para a 2: o adversário investe em mais contas para contornar o limite, e o defensor passa a comparar padrões entre contas. Na passagem para a rodada 3, o adversário investe mais tempo para disfarçar a concentração, enquanto o defensor amplia o histórico analisado e o esforço de revisão. Aumentar a complexidade da defesa também pode aumentar o custo de operação e o atrito para pacientes legítimos.
+
+O objetivo do defensor não é acrescentar restrições indefinidamente, mas manter a disponibilidade dos horários com acesso legítimo e decisões revisáveis. Mesmo após os controles, permanece o risco de reservas abusivas que se parecem com o uso regular. A tentativa de cancelar e reservar novamente, indicada ao final da terceira rodada, exige que o histórico permaneça ligado à conta e ao horário, em vez de ser descartado a cada nova solicitação.
+
+Este recorte corresponde ao abuso de um fluxo de negócio sensível: a OWASP inclui a ocupação de todos os horários de um serviço como exemplo de uso excessivo de reservas, na categoria API6:2023. A modelagem também se apoia na discussão da OWASP sobre abuso de funcionalidades válidas por automação. Essas referências fundamentam o cenário; as três rodadas e os controles apresentados são propostas para o sistema de agendamento. As fontes estão em [fontes/referencias.md](fontes/referencias.md).
+
 ### 3.4 Ameaças e riscos
 *(A Pessoa 4 vai preencher esta parte)*
