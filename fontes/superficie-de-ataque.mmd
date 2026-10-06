@@ -1,0 +1,25 @@
+flowchart LR
+    ADV[Usuário adversarial<br/>Jogador A] -->|cria e opera contas| P2
+    ADV -->|solicita reservas| P1
+    ADV -->|cancela e reserva de novo| P3
+    PAC[Paciente legítimo] --> P2
+    PAC --> P1
+    PAC --> P3
+
+    subgraph SIS[Sistema de agendamento - Jogador B]
+        P2[P2: Cadastro e autenticação]
+        P1[P1: Solicitação de reserva<br/>limite de reservas ativas]
+        P3[P3: Cancelamento, expiração<br/>e nova reserva]
+        API[Backend com RBAC]
+        AG[(Agenda<br/>disponível, provisório, confirmado)]
+        REG[Registros e histórico<br/>conta, horário, instante, situação]
+    end
+
+    P2 --> API
+    P1 --> API
+    P3 --> API
+    API --> AG
+    API --> REG
+    REG -.->|critérios de confirmação| API
+    ADM[Administrador] -->|configura políticas<br/>e revisa casos| API
+    ADM -.-> REG
