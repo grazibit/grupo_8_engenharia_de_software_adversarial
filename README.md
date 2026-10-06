@@ -165,7 +165,7 @@ Os três pontos usam operações válidas e permitidas ao perfil Paciente. A exp
 
 O diagrama mostra os pontos P1, P2 e P3 dentro do sistema, os participantes que os utilizam, o backend, a agenda com os estados dos horários e os registros que alimentam os critérios de confirmação. O administrador aparece como responsável por configurar as políticas e revisar casos contestados.
 
-![Superfície de ataque do abuso de reservas](diagramas_superfície-de-ataque.png)
+![Superfície de ataque do abuso de reservas](diagramas/diagramas_superfície-de-ataque.png)
 
 [Fonte editável do diagrama em Mermaid](diagramas/fontes/superficie-de-ataque.mmd).
 
