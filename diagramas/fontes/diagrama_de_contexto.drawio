@@ -1,0 +1,114 @@
+<mxGraphModel dx="2106" dy="1323" grid="1" gridSize="20" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" background="#f2f2f2" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="visitante-edge-0" edge="1" parent="1" source="visitante" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=0.6;exitY=1.0;entryX=0.5785714285714286;entryY=0.006212059065589415;exitPerimeter=0;entryPerimeter=0;" target="sistema">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="822" y="235" as="sourcePoint" />
+        <mxPoint x="822" y="501.73937653836504" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="visitante-label-0" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=90.0;fillColor=#f2f2f2;fontColor=#303236;" value="Consulta profissionais e horários" vertex="1">
+      <mxGeometry height="30" width="262" x="691" y="353.3696882691825" as="geometry" />
+    </mxCell>
+    <mxCell id="visitante-edge-1" edge="1" parent="1" source="sistema" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=0.42142857142857143;exitY=0.006212059065589415;entryX=0.4;entryY=1.0;exitPerimeter=0;entryPerimeter=0;" target="visitante">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="778" y="501.73937653836504" as="sourcePoint" />
+        <mxPoint x="778" y="235" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="visitante-label-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=90.0;fillColor=#f2f2f2;fontColor=#303236;" value="Oferta pública disponível" vertex="1">
+      <mxGeometry height="30" width="202" x="677" y="353.3696882691825" as="geometry" />
+    </mxCell>
+    <mxCell id="paciente-edge-0" edge="1" parent="1" source="paciente" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=1.039014903418414;exitY=0.6756908775778993;entryX=0.07599847070789931;entryY=0.23500433369966264;exitPerimeter=0;entryPerimeter=0;" target="sistema">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="328.58327875205106" y="416.3536316366849" as="sourcePoint" />
+        <mxPoint x="681.2795717982118" y="565.8012134359055" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="paciente-label-0" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=22.963773059854553;fillColor=#f2f2f2;fontColor=#303236;" value="Solicita, confirma e cancela reservas" vertex="1">
+      <mxGeometry height="30" width="294" x="357.93142527513146" y="476.0774225362952" as="geometry" />
+    </mxCell>
+    <mxCell id="paciente-edge-1" edge="1" parent="1" source="sistema" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=0.014689336764677055;exitY=0.37969388980566643;entryX=0.9609850965815862;entryY=0.945778048975773;exitPerimeter=0;entryPerimeter=0;" target="paciente">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="664.1130142941096" y="606.3142891455866" as="sourcePoint" />
+        <mxPoint x="311.41672124794894" y="456.86670734636596" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="paciente-label-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=22.963773059854553;fillColor=#f2f2f2;fontColor=#303236;" value="Disponibilidade e resultado da reserva" vertex="1">
+      <mxGeometry height="30" width="302" x="336.76486777102923" y="516.5904982459763" as="geometry" />
+    </mxCell>
+    <mxCell id="adversario-edge-0" edge="1" parent="1" source="adversario" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=0.9534872072227374;exitY=-0.01514644419421605;entryX=0.026331681284175294;entryY=0.6601197172272163;exitPerimeter=0;entryPerimeter=0;" target="sistema">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="309.7671855890022" y="872.7280333708676" as="sourcePoint" />
+        <mxPoint x="667.3728707595691" y="684.8335208236206" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="adversario-label-0" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=-27.718501628183358;fillColor=#f2f2f2;fontColor=#303236;" value="Repete reservas e cancelamentos" vertex="1">
+      <mxGeometry height="30" width="272" x="352.57002817428565" y="763.780777097244" as="geometry" />
+    </mxCell>
+    <mxCell id="adversario-edge-1" edge="1" parent="1" source="sistema" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=0.09942321279130226;exitY=0.7992294062246514;entryX=1.0465127927772626;entryY=0.2445249752676629;exitPerimeter=0;entryPerimeter=0;" target="adversario">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="687.8384995815646" y="723.7842337429024" as="sourcePoint" />
+        <mxPoint x="330.2328144109978" y="911.6787462901494" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="adversario-label-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=-27.718501628183358;fillColor=#f2f2f2;fontColor=#303236;" value="Aceitação, recusa, confirmação e prazos" vertex="1">
+      <mxGeometry height="30" width="323" x="347.5356569962812" y="802.7314900165259" as="geometry" />
+    </mxCell>
+    <mxCell id="profissional-edge-0" edge="1" parent="1" source="profissional" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=0.03901490341841364;exitY=0.945778048975773;entryX=0.9853106632353229;entryY=0.37969388980566643;exitPerimeter=0;entryPerimeter=0;" target="sistema">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="1288.583278752051" y="456.86670734636596" as="sourcePoint" />
+        <mxPoint x="935.8869857058904" y="606.3142891455866" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="profissional-label-0" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=-22.96377305985453;fillColor=#f2f2f2;fontColor=#303236;" value="Publica e administra horários" vertex="1">
+      <mxGeometry height="30" width="234" x="995.2351322289708" y="516.5904982459763" as="geometry" />
+    </mxCell>
+    <mxCell id="profissional-edge-1" edge="1" parent="1" source="sistema" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=0.9240015292921007;exitY=0.23500433369966264;entryX=-0.03901490341841364;entryY=0.6756908775778993;exitPerimeter=0;entryPerimeter=0;" target="profissional">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="918.7204282017882" y="565.8012134359055" as="sourcePoint" />
+        <mxPoint x="1271.416721247949" y="416.3536316366849" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="profissional-label-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=-22.96377305985453;fillColor=#f2f2f2;fontColor=#303236;" value="Situação da própria agenda" vertex="1">
+      <mxGeometry height="30" width="220" x="985.0685747248685" y="476.0774225362952" as="geometry" />
+    </mxCell>
+    <mxCell id="administrador-edge-0" edge="1" parent="1" source="administrador" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=-0.0465127927772621;exitY=0.2445249752676629;entryX=0.9005767872086977;entryY=0.7992294062246514;exitPerimeter=0;entryPerimeter=0;" target="sistema">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="1269.7671855890023" y="911.6787462901494" as="sourcePoint" />
+        <mxPoint x="912.1615004184354" y="723.7842337429024" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="administrador-label-0" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=27.71850162818336;fillColor=#f2f2f2;fontColor=#303236;" value="Configura políticas e revisa decisões" vertex="1">
+      <mxGeometry height="30" width="293" x="944.4643430037188" y="802.7314900165259" as="geometry" />
+    </mxCell>
+    <mxCell id="administrador-edge-1" edge="1" parent="1" source="sistema" style="html=1;endArrow=block;endFill=1;strokeColor=#303236;strokeWidth=2;rounded=0;exitX=0.9736683187158247;exitY=0.6601197172272163;entryX=0.0465127927772621;entryY=-0.01514644419421605;exitPerimeter=0;entryPerimeter=0;" target="administrador">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="932.6271292404309" y="684.8335208236206" as="sourcePoint" />
+        <mxPoint x="1290.2328144109977" y="872.7280333708676" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="administrador-label-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;rotation=27.71850162818336;fillColor=#f2f2f2;fontColor=#303236;" value="Registros e alertas autorizados" vertex="1">
+      <mxGeometry height="30" width="250" x="986.4299718257143" y="763.780777097244" as="geometry" />
+    </mxCell>
+    <mxCell id="visitante" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#afa1ff;strokeColor=none;fontColor=#272930;fontSize=23;fontStyle=1;" value="Visitante" vertex="1">
+      <mxGeometry height="150" width="220" x="690" y="85" as="geometry" />
+    </mxCell>
+    <mxCell id="paciente" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#afa1ff;strokeColor=none;fontColor=#272930;fontSize=23;fontStyle=1;" value="Paciente&lt;br&gt;legítimo" vertex="1">
+      <mxGeometry height="150" width="220" x="100" y="315" as="geometry" />
+    </mxCell>
+    <mxCell id="adversario" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#afa1ff;strokeColor=none;fontColor=#272930;fontSize=23;fontStyle=1;" value="Usuário&lt;br&gt;adversarial" vertex="1">
+      <mxGeometry height="150" width="220" x="100" y="875" as="geometry" />
+    </mxCell>
+    <mxCell id="profissional" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#afa1ff;strokeColor=none;fontColor=#272930;fontSize=23;fontStyle=1;" value="Profissional&lt;br&gt;de saúde" vertex="1">
+      <mxGeometry height="150" width="220" x="1280" y="315" as="geometry" />
+    </mxCell>
+    <mxCell id="administrador" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#afa1ff;strokeColor=none;fontColor=#272930;fontSize=23;fontStyle=1;" value="Administrador" vertex="1">
+      <mxGeometry height="150" width="220" x="1280" y="875" as="geometry" />
+    </mxCell>
+    <mxCell id="sistema" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#2b2e33;strokeColor=none;fontColor=#ffffff;fontSize=23;" value="Sistema de Agendamento&lt;br&gt;de Consultas&lt;br&gt;&lt;br&gt;(Defensor)" vertex="1">
+      <mxGeometry height="280.63" width="302" x="660" y="499.37" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
