@@ -167,7 +167,7 @@ O diagrama mostra os pontos P1, P2 e P3 dentro do sistema, os participantes que 
 
 ![Superfície de ataque do abuso de reservas](diagramas/diagramas_superfície-de-ataque.png)
 
-[Fonte editável do diagrama em Mermaid](diagramas/fontes/superficie-de-ataque.mmd).
+[Fonte editável do diagrama em Mermaid](fontes/superficie-de-ataque.mmd).
 
 #### Cenários de ameaça
 
