@@ -3,7 +3,61 @@
 ## 3. Desenvolvimento
 
 ### 3.1 Descrição do sistema adversarial
-*(A Pessoa 1 vai preencher esta parte)*
+### 3.1 Descrição do sistema adversarial
+
+#### Sistema e interação analisada
+
+O Sistema de Agendamento de Consultas centraliza a publicação de horários por profissionais de saúde e a busca e reserva desses horários por pacientes. O sistema considera os perfis Visitante, Paciente, Profissional e Administrador, com controle de acesso baseado em papéis (RBAC) gerenciado pelo backend, conforme a especificação anterior do grupo na disciplina de Engenharia de Software Seguro.
+
+Neste trabalho, o recorte é **a disputa pela disponibilidade dos horários de uma agenda por meio da criação, confirmação e cancelamento de reservas**. O adversário utiliza o fluxo destinado aos pacientes para ocupar vários horários sem intenção de realizar as consultas, dificultando o agendamento por outras pessoas. O defensor é o sistema, cujas políticas são configuradas e revisadas pelo administrador. Esse recorte corresponde aos jogadores A e B do modelo estático e à sequência de adaptações do modelo dinâmico.
+
+A análise considera uma agenda com quantidade finita de horários. Como proposta para uma implementação posterior, cada horário pode estar disponível, reservado provisoriamente ou confirmado. Uma reserva provisória retém o horário enquanto aguarda confirmação e pode expirar; o cancelamento libera o horário. O backend deve impedir que duas reservas ativas ocupem o mesmo horário. Os controles de limitação e confirmação discutidos nas seções seguintes são propostas de desenho, não funcionalidades cuja implementação foi verificada.
+
+Ficam fora do recorte o atendimento clínico, prontuários, pagamentos e a implementação de ataques. As tentativas abusivas e respostas do defensor são situações hipotéticas para a modelagem.
+
+#### Atores, objetivos, capacidades e informações
+
+| Ator | Objetivo | Ações ou capacidades | Informações observáveis | Restrições ou custos |
+| --- | --- | --- | --- | --- |
+| **Visitante** | Encontrar profissionais e opções de atendimento. | Consultar a oferta pública de profissionais e horários; iniciar cadastro. | Informações públicas dos profissionais e horários anunciados como disponíveis. | Não pode reservar sem autenticação; não acessa reservas ou dados de outros pacientes. |
+| **Paciente legítimo** | Conseguir e manter consultas de que necessita. | Solicitar, confirmar, consultar e cancelar suas próprias reservas. | Disponibilidade apresentada, situação das próprias reservas, recusas, pedidos de confirmação e prazos comunicados. | Oferta finita de horários, tempo para confirmar e limites que podem afetar acompanhamentos frequentes. |
+| **Usuário adversarial — Jogador A** | Monopolizar horários e reduzir o acesso dos pacientes legítimos. | Usar as operações de reserva e cancelamento; repetir solicitações; no cenário hipotético, operar múltiplas contas e variar os intervalos das tentativas. Também pode optar pelo uso regular, como na ação A1. | Respostas às próprias solicitações, disponibilidade publicada, exigência de confirmação e expiração das próprias reservas provisórias. | Esforço para manter contas, tempo entre tentativas, verificações adicionais e possibilidade de recusa ou bloqueio. Não se pressupõe acesso administrativo ou a dados de outros pacientes. |
+| **Profissional de saúde** | Disponibilizar sua agenda e atender pacientes, evitando ocupação improdutiva. | Publicar e administrar os horários da própria agenda; acompanhar os agendamentos autorizados para seu papel. | Horários ocupados e livres e situação das reservas da própria agenda, respeitando as permissões do sistema. | Capacidade limitada de atendimento e perda de oportunidades quando horários são retidos sem necessidade. |
+| **Administrador** | Manter o serviço operante e revisar decisões de controle. | Configurar políticas de reserva, analisar alertas e revisar casos contestados, dentro de suas permissões. | Registros operacionais de solicitações, resultados, confirmações e cancelamentos necessários à revisão. | Custo de operação e análise; informação incompleta sobre a intenção de cada usuário; responsabilidade de evitar bloqueios indevidos. |
+| **Sistema/defensor — Jogador B** | Preservar a disponibilidade da agenda e permitir reservas legítimas. | Validar autenticação e autorização; verificar disponibilidade; aceitar ou recusar solicitações; aplicar os controles propostos de limite, confirmação e expiração; registrar eventos. | Conta solicitante, horário escolhido, instante da solicitação, situação da reserva e histórico das operações. | Recursos de processamento, necessidade de manter consistência e dificuldade de distinguir uso legítimo de abuso apenas pelo comportamento. |
+
+O adversário é uma forma de atuação de um usuário com permissões de paciente, e não um novo papel de acesso. Da mesma forma, o administrador configura e revisa a defesa, enquanto o sistema aplica as decisões durante as solicitações.
+
+#### Ativos e propriedades a preservar
+
+- **Disponibilidade dos horários:** evitar que reservas sem intenção de atendimento eliminem as opções para pacientes legítimos.
+- **Acesso justo:** permitir que pacientes diferentes disputem os horários sem concentração artificial por um único participante. Isso não pressupõe oferta suficiente para todas as demandas.
+- **Integridade e consistência da agenda:** manter estados corretos e impedir reservas conflitantes para o mesmo horário.
+- **Privacidade:** limitar a consulta de reservas e registros às informações autorizadas para cada papel.
+- **Rastreabilidade:** conservar registros suficientes para relacionar tentativas, confirmações e cancelamentos e permitir revisão de decisões, sem usar dados clínicos para inferir intenção.
+
+#### Pressupostos e possibilidades de falha
+
+| Pressuposto | Como pode falhar | Consequência para o recorte |
+| --- | --- | --- |
+| **Uma conta representa adequadamente um participante.** | A mesma pessoa pode operar múltiplas contas, hipótese adotada no modelo dinâmico. | Um limite por conta pode ser respeitado individualmente e ainda permitir concentração de horários no conjunto. |
+| **Uma reserva expressa intenção de comparecer à consulta.** | O participante pode reservar deliberadamente sem intenção de atendimento. | Horários deixam de estar disponíveis apesar de não atenderem a uma necessidade real. |
+| **Confirmações e prazos aumentam o custo do abuso sem impedir o uso legítimo.** | O adversário pode concluir confirmações, enquanto um paciente legítimo pode ter dificuldade para responder no prazo. | O abuso pode persistir e reservas legítimas podem expirar; a defesa precisa permitir revisão. |
+| **Padrões de solicitação ajudam a distinguir abuso de uso regular.** | Pacientes distintos podem agir em horários próximos; o adversário pode espaçar suas tentativas. | Podem surgir falsos positivos e tentativas abusivas não detectadas, exigindo análise de histórico e cautela nas decisões. |
+
+#### Diagrama de contexto
+
+O diagrama mostra os participantes e as interações com o sistema dentro do recorte. O adversário utiliza a mesma interface de reservas do paciente; suas respostas observáveis permitem adaptar a ação seguinte. Não se pressupõe que ele tenha acesso às regras internas de detecção.
+
+
+#### Por que o sistema é adversarial?
+
+O conflito está no uso de um recurso limitado: os horários da agenda. Pacientes legítimos procuram consultas necessárias; o adversário procura reter esses horários para impedir ou dificultar o acesso de outras pessoas; o defensor procura preservar o serviço e reduzir a ocupação abusiva. A intenção do adversário é incompatível com a finalidade do agendamento.
+
+O caráter adversarial aparece na escolha deliberada e na adaptação: ao receber uma recusa por limite de reservas, o usuário pode distribuir as tentativas entre contas; ao perceber confirmações adicionais, pode alterar o intervalo das solicitações. O defensor também observa os registros e ajusta sua resposta. Uma falta isolada ou um cancelamento legítimo não comprova essa intenção. A análise trata da ocupação intencional e adaptativa, que pode ocorrer mesmo por operações válidas e com o RBAC funcionando corretamente.
+
+Assim, a questão central das próximas seções é como conter a concentração de horários sem impor custos excessivos ou restrições indevidas aos pacientes legítimos.
+
 
 ### 3.2 Modelo estratégico estático
 
