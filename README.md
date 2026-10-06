@@ -146,4 +146,71 @@ O diagrama apresenta as três rodadas na sequência ação → resposta → obse
 [Fonte editável do diagrama em draw.io](diagramas/fontes/ciclo-adaptativo.drawio).
 
 ### 3.4 Ameaças e riscos
-*(A Pessoa 4 vai preencher esta parte)*
+
+#### Base da análise
+
+Esta seção parte das três rodadas da seção 3.3 e dos ativos e pressupostos da seção 3.1. Os cenários são **hipóteses de análise**, não vulnerabilidades comprovadas no sistema de agendamento, e os controles mencionados são propostas de desenho. A avaliação de risco considera o sistema com o limite de reservas ativas por conta, controle proposto na rodada 1 e ponto de partida mínimo do desenho. Os controles das rodadas 2 e 3 são tratados em "Redesenho e resiliência".
+
+#### Pontos de exploração
+
+| ID | Ponto de exploração | Componente ou fluxo envolvido | Pressuposto da seção 3.1 relacionado |
+| --- | --- | --- | --- |
+| **P1** | Solicitação de reserva e limite de reservas ativas | Operação de reserva, contagem de reservas ativas e provisórias por conta | Uma reserva expressa intenção de comparecer à consulta |
+| **P2** | Cadastro e autenticação de contas | Criação de contas com perfil de paciente e identificação do solicitante | Uma conta representa adequadamente um participante |
+| **P3** | Cancelamento, expiração e nova reserva | Liberação de horários, prazo de reservas provisórias e histórico das operações | Confirmações e prazos aumentam o custo do abuso sem impedir o uso legítimo; padrões de solicitação ajudam a distinguir abuso de uso regular |
+
+Os três pontos usam operações válidas e permitidas ao perfil Paciente. A exploração ocorre pelo uso intencional dessas operações, com o RBAC funcionando corretamente.
+
+#### Diagrama de superfície de ataque
+
+O diagrama mostra os pontos P1, P2 e P3 dentro do sistema, os participantes que os utilizam, o backend, a agenda com os estados dos horários e os registros que alimentam os critérios de confirmação. O administrador aparece como responsável por configurar as políticas e revisar casos contestados.
+
+![Superfície de ataque do abuso de reservas](diagramas/superficie-de-ataque.png)
+
+[Fonte editável do diagrama em Mermaid](diagramas/fontes/superficie-de-ataque.mmd).
+
+#### Cenários de ameaça
+
+- **A1 (rodada 1):** Um **usuário adversarial (Jogador A)** pode **solicitar vários horários pela mesma conta** por meio da **solicitação de reserva (P1)**, aproveitando **a necessidade de exceções ao limite por conta para acompanhamentos frequentes e a hipótese de que toda reserva expressa intenção de comparecer**, causando **retenção de horários além do necessário** sobre a **disponibilidade dos horários**.
+- **A2 (rodada 2):** Um **usuário adversarial (Jogador A)** pode **operar várias contas, cada uma abaixo do limite individual**, por meio do **cadastro e autenticação (P2)**, aproveitando **o pressuposto de que uma conta representa um participante**, causando **concentração de horários da mesma agenda** sobre a **disponibilidade dos horários** e o **acesso justo**.
+- **A3 (rodada 3):** Um **usuário adversarial (Jogador A)** pode **cancelar e reservar novamente o mesmo horário, ou espaçar as solicitações**, por meio do **fluxo de cancelamento, expiração e nova reserva (P3)**, aproveitando **a possibilidade de renovar a retenção sem que o histórico fique ligado à conta e ao horário**, causando **ocupação persistente de horários e perda de rastreabilidade** sobre a **disponibilidade dos horários** e a **rastreabilidade**.
+
+#### Avaliação de risco
+
+Escala: probabilidade (1 = baixa, 2 = média, 3 = alta), impacto (1 = baixo, 2 = médio, 3 = alto) e risco = probabilidade × impacto.
+
+| ID | Cenário de ameaça | Ponto de exploração | Pressuposto ou fraqueza | Ativo afetado | Probabilidade | Impacto | Risco |
+| --- | --- | --- | --- | --- | :-: | :-: | :-: |
+| **A1** | Reservas em excesso pela mesma conta | P1 | Exceções ao limite para acompanhamentos frequentes; reserva nem sempre expressa intenção de comparecer | Disponibilidade dos horários | 3 | 1 | **3** |
+| **A2** | Várias contas abaixo do limite individual | P2 | Uma conta representa um participante | Disponibilidade dos horários e acesso justo | 3 | 3 | **9** |
+| **A3** | Cancelar e reservar de novo, com tentativas espaçadas | P3 | Histórico não ligado à conta e ao horário; padrões espaçados parecem uso regular | Disponibilidade dos horários e rastreabilidade | 2 | 2 | **4** |
+
+Justificativa:
+
+- **A1:** a tentativa é a mais simples (probabilidade 3), mas o limite por conta restringe o dano a um pequeno número de horários (impacto 1).
+- **A2:** o custo de operar contas adicionais é baixo, o limite individual é respeitado em cada conta e o conjunto pode ocupar grande parte da agenda. Por isso, probabilidade e impacto são altos.
+- **A3:** exige paciência e conhecimento do prazo de expiração (probabilidade 2). O impacto é médio, pois as reservas provisórias expiram, mas a ocupação pode se repetir e dificultar a revisão do histórico.
+
+#### Ameaça prioritária: A2
+
+A2 tem o maior risco (9) e é a ameaça que anula o controle aplicado na rodada 1. As respostas abaixo seguem as rodadas 2 e 3 da seção 3.3.
+
+1. **Como o sistema poderia responder:** manter o limite por conta, contando também as reservas pendentes. Comparar padrões de tempo e de horários entre contas e exigir confirmação adicional nas solicitações com sinais de concentração. Aplicar prazo de expiração às reservas provisórias.
+2. **Que informação essa resposta revelaria:** ao adversário, quais solicitações exigem confirmação e que o conjunto das tentativas chama atenção, sem expor as regras internas de detecção. Ao defensor, que o total de horários ocupados pode crescer mesmo com cada conta abaixo do limite.
+3. **Como o adversário poderia se adaptar:** continuar com várias contas, mas espaçar as tentativas e, depois, cancelar e reservar novamente para renovar a retenção (rodada 3, que corresponde à ameaça A3).
+4. **Efeitos colaterais para usuários legítimos:** pessoas diferentes que reservam horários semelhantes podem ser submetidas à confirmação adicional e demorar mais para concluir o agendamento. Pacientes com dificuldade para responder no prazo podem perder a reserva provisória. Há risco de falsos positivos.
+5. **Risco que continuaria existindo:** abuso que se parece com o uso regular, contas operadas de forma independente e renovação de reservas por cancelamento e nova solicitação. Observar padrões semelhantes não prova quem controla as contas.
+6. **O que o sistema precisa continuar preservando:** a disponibilidade dos horários, o acesso justo, a integridade e consistência da agenda (sem reservas conflitantes), a privacidade (sem usar dados clínicos para inferir intenção) e a rastreabilidade. As reservas legítimas já confirmadas devem ser mantidas e as decisões indevidas devem poder ser revisadas pelo administrador.
+
+#### Redesenho e resiliência
+
+| Controle proposto | Ameaças | Como muda o incentivo | O que passa a ser observável | Custo ou efeito colateral |
+| --- | --- | --- | --- | --- |
+| Limite de reservas ativas por conta, contando as pendentes | A1 | Reduz o ganho de concentrar reservas em uma conta | Recusas por limite e volume de tentativas | Pacientes com acompanhamentos frequentes podem atingir o limite e precisar de exceção justificada |
+| Verificação de identidade no cadastro (parte do controle reforçado da seção 3.2) | A2 | Aumenta o custo de manter cada conta adicional | Contas novas com reserva imediata | Atrito para novos pacientes legítimos |
+| Comparação de padrões de tempo e de horários entre contas, com confirmação adicional | A2 | Torna menos vantajoso solicitar horários próximos da mesma agenda | Solicitações sinalizadas e confirmações concluídas ou não | Confirmação extra e atraso para pacientes distintos com horários semelhantes |
+| Expiração de reservas provisórias | A2, A3 | Horário não confirmado volta à agenda, o que reduz o valor de reter sem comparecer | Reservas expiradas por conta | Pacientes legítimos podem perder a reserva se não confirmarem no prazo |
+| Histórico ligado à conta e ao horário, em período mais longo | A3 | Impede que cancelar e reservar de novo apague o rastro da retenção | Ciclos de cancelar e reservar, reservas ativas e confirmações ao longo do tempo | Maior esforço de análise e revisão para o administrador |
+| Revisão de decisões pelo administrador | A1, A2, A3 | Reduz o custo de bloqueios indevidos | Casos contestados e taxa de decisões revertidas | Custo operacional e informação incompleta sobre a intenção de cada usuário |
+
+**Risco residual.** Os controles reduzem a probabilidade e o impacto das ameaças, mas não as eliminam. Um adversário paciente, com contas independentes e ritmo semelhante ao de pacientes comuns, ainda pode ocupar parte da agenda. Cada nova defesa também aumenta o custo de operação e o atrito para pacientes legítimos, o que mantém a corrida armamentista descrita na seção 3.3. Os critérios devem ser reavaliados quando o padrão persistir após uma mudança de controle ou quando aumentarem as verificações indevidas.
